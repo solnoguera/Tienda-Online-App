@@ -1,3 +1,5 @@
-export { default as CategoyBreadScreen } from "./CategoryBreadScreen";
+export { default as ProductsScreen } from "./ProductsScreen";
 export { default as CategoriesScreen } from "./CategoriesScreen";
-export { default as BreadDetailScreen } from "./BreadDetailScreen";
+export { default as DetailScreen } from "./DetailScreen";
+export { default as OrdersScreen } from "./OrdersScreen";
+export { default as CartScreen } from "./CartScreen";

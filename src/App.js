@@ -1,8 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import ShopNavigator from "./navigation/ShopNavigator";
+import AppNavigator from "./navigation/index";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -12,7 +11,7 @@ export default function App() {
     OpenSansItalic: require("../assets/fonts/OpenSans-Italic.ttf"),
     OpenSansMedium: require("../assets/fonts/OpenSans-Medium.ttf"),
   });
-  return loaded ? <ShopNavigator /> : <AppLoading />;
+  return loaded ? <AppNavigator /> : <AppLoading />;
 }
 
 const styles = StyleSheet.create({

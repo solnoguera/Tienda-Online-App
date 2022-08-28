@@ -1,24 +1,49 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { Platform } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { colors } from "../constants/colors";
 import {
   CategoriesScreen,
-  CategoyBreadScreen,
-  BreadDetailScreen,
+  ProductsScreen,
+  DetailScreen,
 } from "../screens/index";
 
 const Stack = createNativeStackNavigator();
 
 const ShopNavigator = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={CategoriesScreen} />
-        <Stack.Screen name="Products" component={CategoyBreadScreen} />
-        <Stack.Screen name="Detail" component={BreadDetailScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor:
+            Platform.OS === "ios" ? colors.primary : colors.secondary,
+        },
+        headerTintColor: Platform.OS === "ios" ? colors.textLight : colors.text,
+        headerTitleStyle: {
+          fontFamily: "OpenSansBold",
+        },
+      }}
+    >
+      <Stack.Screen
+        name="Home"
+        component={CategoriesScreen}
+        options={{ headerShown: false }}
+      />
+      {/** En la screen recibo el parametro y seteo el titulo del header para que se visualice la categoria.*/}
+      <Stack.Screen
+        name="Products"
+        component={ProductsScreen}
+        options={({ route, navigation }) => ({
+          headerTitle: route.params.name,
+        })}
+      />
+      <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={({ route }) => ({ headerTitle: route.params.name })}
+      />
+    </Stack.Navigator>
   );
 };
 

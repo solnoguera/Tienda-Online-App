@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { Provider } from "react-redux";
+import { store } from "./store/index";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import AppNavigator from "./navigation/index";
@@ -11,7 +13,14 @@ export default function App() {
     OpenSansItalic: require("../assets/fonts/OpenSans-Italic.ttf"),
     OpenSansMedium: require("../assets/fonts/OpenSans-Medium.ttf"),
   });
-  return loaded ? <AppNavigator /> : <AppLoading />;
+  if (loaded) {
+    return <AppLoading />;
+  }
+  return (
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({

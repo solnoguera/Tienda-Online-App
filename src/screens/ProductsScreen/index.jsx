@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, FlatList } from "react-native";
 import { PRODUCTS } from "../../constants/data/products";
 import { ProductItem } from "../../components/index";
 import { styles } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  filteredProducts,
+  selectProduct,
+} from "../../store/actions/products.actions";
 
-const ProductsScreen = ({ navigation, route }) => {
-  const { categoryId } = route.params;
-  const productsCategory = PRODUCTS.filter(
-    (item) => item.category === categoryId
-  );
+const ProductsScreen = ({ navigation }) => {
+  const categorySelected = useSelector((store) => store.category.selected);
+  const dispatch = useDispatch();
+
+  //Como ya despache la accion de filtrado en el useEffect, llamo a los productos filtrados
+  const products = useSelector((store) => store.products.filteredProducts);
+
+  useEffect(() => {
+    dispatch(filteredProducts(categorySelected.id));
+  }, []);
   const onSelected = (item) => {
+    dispatch(selectProduct(item.id));
     navigation.navigate("Detail", {
-      productId: item.id,
       name: item.name,
     });
   };
@@ -22,7 +32,7 @@ const ProductsScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView>
       <FlatList
-        data={productsCategory}
+        data={products}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
       />

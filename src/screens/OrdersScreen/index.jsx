@@ -1,12 +1,13 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { styles } from "./styles";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { OrderItem } from "../../components";
-import { ORDERS } from "../../constants/data/orders";
 
 const OrdersScreen = () => {
-  const items = ORDERS;
-  const total = 1200;
+  const items = [];
+  const total = 0;
+  const dispatch = useDispatch();
 
   const onDelete = (id) => {
     console.warn("Deleted id: " + id);

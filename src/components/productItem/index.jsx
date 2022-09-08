@@ -10,11 +10,11 @@ const ProductItem = ({ item, onSelected }) => {
         style={styles.containerTouchable}
       >
         <View>
-          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.name}>{item?.name}</Text>
         </View>
         <View>
-          <Text style={styles.price}>{item.price}</Text>
-          <Text style={styles.description}>{item.description}</Text>
+          <Text style={styles.price}>{item?.price}</Text>
+          <Text style={styles.description}>{item?.description}</Text>
         </View>
       </TouchableOpacity>
     </View>

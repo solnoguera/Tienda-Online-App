@@ -15,9 +15,11 @@ const CategoriesScreen = ({ navigation }) => {
       name: category.name,
     });
   };
-  const renderItem = ({ category }) => (
-    <CategoryItem item={category} onSelected={() => onSelected(category)} />
-  );
+  //DATO: EL RENDER ITEM RECIBE UN OBJETO Y DESESTRUCTURAMOS SIEMPREEE item PORQUE LA DATA VIENE AHI ADENTRO.
+  const renderItem = ({ item }) => {
+    console.warn(item);
+    return <CategoryItem item={item} onSelected={() => onSelected(item)} />;
+  };
   const keyExtractor = (item, index) => item.id.toString();
   return (
     <SafeAreaView>

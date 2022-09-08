@@ -17,7 +17,7 @@ const ProductsScreen = ({ navigation }) => {
   const products = useSelector((store) => store.products.filteredProducts);
 
   useEffect(() => {
-    dispatch(filteredProducts(categorySelected.id));
+    dispatch(filteredProducts(categorySelected?.id));
   }, []);
   const onSelected = (item) => {
     dispatch(selectProduct(item.id));
@@ -26,7 +26,7 @@ const ProductsScreen = ({ navigation }) => {
     });
   };
   const renderItem = ({ item }) => (
-    <ProductItem item={item} onSelected={() => onSelected(category)} />
+    <ProductItem item={item} onSelected={() => onSelected(item)} />
   );
   const keyExtractor = (item, index) => item.id.toString();
   return (

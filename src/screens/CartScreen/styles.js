@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   buttonConfirm: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.secondary,
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 15,

@@ -2,14 +2,17 @@ import React from "react";
 import { styles } from "./styles";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { CartItem } from "../../components";
-import { CART } from "../../constants/data/cart";
+import { useSelector, useDispatch } from "react-redux";
+import { removeItem } from "../../store/actions/cart.actions";
 
 const CartScreen = () => {
-  const items = CART;
-  const total = 1200;
+  const dispatch = useDispatch();
+  const items = useSelector((store) => store.cart.items);
+  const total = useSelector((store) => store.cart.total);
 
   const onDelete = (id) => {
     console.warn("Deleted id: " + id);
+    dispatch(removeItem(id));
   };
   const onConfirm = () => console.warn("Confirmado");
 

@@ -24,6 +24,15 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  disabledConfirm: {
+    backgroundColor: colors.white,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   confirm: {
     fontFamily: "Lato-Regular",
     fontSize: 14,

@@ -3,7 +3,7 @@ import { styles } from "./styles";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { CartItem } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem } from "../../store/actions/cart.actions";
+import { removeItem, confirmCart } from "../../store/actions/cart.actions";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -14,11 +14,13 @@ const CartScreen = () => {
     console.warn("Deleted id: " + id);
     dispatch(removeItem(id));
   };
-  const onConfirm = () => console.warn("Confirmado");
+  const onConfirm = () => {
+    dispatch(confirmCart(items, total));
+  };
 
   const keyExtractor = (item) => item.id.toString();
   const renderItem = ({ item }) => <CartItem item={item} onDelete={onDelete} />;
-
+  const disabledConfirm = total === 0;
   return (
     <View style={styles.container}>
       <View style={styles.list}>
@@ -29,7 +31,13 @@ const CartScreen = () => {
         />
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.buttonConfirm} onPress={onConfirm}>
+        <TouchableOpacity
+          disabled={disabledConfirm}
+          style={
+            disabledConfirm ? styles.disabledConfirm : styles.buttonConfirm
+          }
+          onPress={onConfirm}
+        >
           <Text style={styles.confirm}>Confirmar</Text>
           <View style={styles.totalContainer}>
             <Text style={styles.totalTitle}>Total</Text>

@@ -1,20 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useFocusEffect } from "@react-navigation/native";
 import { styles } from "./styles";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { OrderItem } from "../../components";
-import { getOrders } from "../../store/actions/order.actions";
+import { deleteOrder, getOrders } from "../../store/actions/order.actions";
 
 const OrdersScreen = () => {
   const dispatch = useDispatch();
   const orders = useSelector((store) => store.order.orders);
 
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getOrders());
+    }, [dispatch])
+  );
+
   useEffect(() => {
     dispatch(getOrders());
-  }, []);
+  }, [dispatch]);
 
   const onDelete = (id) => {
     console.warn("Deleted id: " + id);
+    dispatch(deleteOrder(id));
   };
   const keyExtractor = (item) => item.id.toString();
   const renderItem = ({ item }) => (

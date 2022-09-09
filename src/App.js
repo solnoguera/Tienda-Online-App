@@ -13,13 +13,13 @@ export default function App() {
     OpenSansItalic: require("../assets/fonts/OpenSans-Italic.ttf"),
     OpenSansMedium: require("../assets/fonts/OpenSans-Medium.ttf"),
   });
-  if (!loaded) {
-    return <AppLoading />;
-  }
+
   return (
-    <Provider store={store}>
-      <AppNavigator />
-    </Provider>
+    loaded && (
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    )
   );
 }
 

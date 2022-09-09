@@ -5,6 +5,7 @@ import {
   productsReducer,
   cartReducer,
   orderReducer,
+  authReducer,
 } from "./reducers";
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   cart: cartReducer,
   order: orderReducer,
+  auth: authReducer,
 });
 // Mi estado global es un objeto que contiene mis reductores.
 export default createStore(rootReducer, applyMiddleware(thunk));

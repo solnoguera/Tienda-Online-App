@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   confirm: {
-    fontFamily: "Lato-Regular",
+    fontFamily: "OpenSansMedium",
     fontSize: 14,
   },
   totalContainer: {
@@ -44,11 +44,11 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   totalTitle: {
-    fontFamily: "Lato-Regular",
+    fontFamily: "OpenSansMedium",
     fontSize: 14,
   },
   total: {
-    fontFamily: "Lato-Bold",
+    fontFamily: "OpenSansBold",
     fontSize: 16,
   },
 });

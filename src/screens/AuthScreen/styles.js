@@ -7,10 +7,16 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    shadowColor: colors.black,
+    borderColor: colors.primary,
+    shadowOpacity: 0.86,
+    shadowOffset: { width: 2, height: 2 },
+    shadowRadius: 6,
+    elevation: 7,
   },
   container: {
     width: "80%",
-    height: 340,
+    height: 380,
     maxWidth: 400,
     padding: 15,
     margin: 15,
@@ -25,15 +31,11 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
   },
-  label: {
-    fontSize: 14,
-    fontFamily: "OpenSansMedium",
-    marginVertical: 5,
-  },
   prompt: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    paddingVertical: 10,
   },
   promptMessage: {
     fontSize: 14,
@@ -42,4 +44,7 @@ export const styles = StyleSheet.create({
     marginRight: 15,
   },
   promptButton: {},
+  footer: {
+    paddingVertical: 25,
+  },
 });

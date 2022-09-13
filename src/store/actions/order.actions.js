@@ -11,7 +11,7 @@ export const getOrders = () => {
       });
       const data = await response.json();
       console.warn(data);
-      const orders = Object.keys(data).map((key) => {
+      const orders = Object.keys(data)?.map((key) => {
         return {
           ...data[key],
           id: key,
